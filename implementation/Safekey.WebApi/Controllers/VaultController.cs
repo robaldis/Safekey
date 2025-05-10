@@ -25,11 +25,11 @@ namespace Safekey.Webapi.Controllers
         public ActionResult CreateSecret(
                 [FromRoute] string key)
         {
-            Console.WriteLine($"key: {key}");
-            var secret = _vaultCatalogue.CreateSecret(key);
-            Console.WriteLine(secret);
-            var a = _vaultCatalogue.GetSecret(secret.Item1, secret.Item2);
-            Console.WriteLine(a);
+            //Console.WriteLine($"key: {key}");
+            //var secret = _vaultCatalogue.CreateSecret(key);
+            //Console.WriteLine(secret);
+            //var a = _vaultCatalogue.GetSecret(secret.Item1, secret.Item2);
+            //Console.WriteLine(a);
 
             return new CreatedResult();
         }

@@ -18,6 +18,7 @@
 
   <ItemGroup>
       <ProjectReference Include="../Safekey.Service/Safekey.Service.csproj" />
+      <ProjectReference Include="../Safekey.Postgres.Deployment/Safekey.Postgres.Deployment.csproj" />
   </ItemGroup>
 
 

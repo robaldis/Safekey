@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "implementtion", "implementtion", "{0310A731-2E88-44FB-B876-87C90732BB31}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "implementation", "implementation", "{0310A731-2E88-44FB-B876-87C90732BB31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Safekey.WebApi", "implementtion\Safekey.WebApi\Safekey.WebApi.csproj", "{F931FAF0-1DB7-41EC-8750-C51BEE0583E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Safekey.WebApi", "implementation\Safekey.WebApi\Safekey.WebApi.csproj", "{F931FAF0-1DB7-41EC-8750-C51BEE0583E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Safekey.Service", "implementtion\Safekey.Service\Safekey.Service.csproj", "{21080B97-BEF1-4BB5-A464-1F2CD21B43FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Safekey.Service", "implementation\Safekey.Service\Safekey.Service.csproj", "{21080B97-BEF1-4BB5-A464-1F2CD21B43FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
