@@ -3,26 +3,32 @@ namespace Safekey.Service.Vault;
 
 public class VaultCatalogue : IVaultCatalogue
 {
+    private readonly IVaultRegistry _registry;
+
+    public VaultCatalogue(
+        IVaultRegistry vaultRegistry)
+    {
+        _registry = vaultRegistry;
+    }
 
     public string CreateSecret(string key, string secret)
     {
-        //var bytes = Encryption.Encryption.Encrypt(secret);
-        //return bytes;
-        return "";
+        var (hash, iv) = Encryption.Encryption.Encrypt(secret);
+        _registry.CreateSecret(key, hash, iv);
+        return key;
     }
 
 
     public string GetSecret(string key)
     {
-        //var plainText = Encryption.Encryption.Decrypt(secret, IV);
-        //return plainText;
-        return "";
+        var secret = _registry.GetSecret(key);
+        var plainText = Encryption.Encryption.Decrypt(secret.Value, secret.IV);
+        return plainText;
     }
 
     public void DeleteSecret(string key)
     {
-        //var plainText = Encryption.Encryption.Decrypt(secret, IV);
-        //return plainText;
+        _registry.DeleteSecret(key);
     }
 }
 

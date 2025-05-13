@@ -10,9 +10,9 @@ namespace Safekey.Webapi.Controllers
     public class VaultController : ControllerBase
     {
         private readonly ILogger<VaultController> _logger;
-        private readonly VaultCatalogue _vaultCatalogue;
+        private readonly IVaultCatalogue _vaultCatalogue;
 
-        public VaultController(ILogger<VaultController> logger, VaultCatalogue vaultCatalogue)
+        public VaultController(ILogger<VaultController> logger, IVaultCatalogue vaultCatalogue)
         {
             _logger = logger;
             _vaultCatalogue = vaultCatalogue;
@@ -23,26 +23,23 @@ namespace Safekey.Webapi.Controllers
         [SwaggerOperation(OperationId = "CreateSecret")]
         [SwaggerResponse(StatusCodes.Status201Created)]
         public ActionResult CreateSecret(
-                [FromRoute] string key)
+                [FromRoute] string key,
+                [FromBody] string secret)
         {
-            //Console.WriteLine($"key: {key}");
-            //var secret = _vaultCatalogue.CreateSecret(key);
-            //Console.WriteLine(secret);
-            //var a = _vaultCatalogue.GetSecret(secret.Item1, secret.Item2);
-            //Console.WriteLine(a);
-
+            _vaultCatalogue.CreateSecret(key, secret);
             return new CreatedResult();
         }
 
-        //[HttpGet]
-        //[Route("{fileName}", Name = "GetFile")]
-        //[SwaggerOperation(OperationId = "GetFile")]
-        //[SwaggerResponse(StatusCodes.Status200OK)]
-        //public async Task<ActionResult<FileResponse>> GetFile(
-        //        [FromRoute] string fileName)
-        //{
-        //    return await HandleRequest(() => _fileApi.ReadFile(fileName));
-        //}
+        [HttpGet]
+        [Route("{key}", Name = "GetSecret")]
+        [SwaggerOperation(OperationId = "GetSecret")]
+        [SwaggerResponse(StatusCodes.Status200OK)]
+        public async Task<ActionResult<string>> GetFile(
+                [FromRoute] string key)
+        {
+            var secret = _vaultCatalogue.GetSecret(key);
+            return new ActionResult<string>(secret);
+        }
 
         //public async Task<ActionResult<TResult>> HandleRequest<TResult>(
         //        Func<Task<Either<IFailure, TResult>>> apiFunc,

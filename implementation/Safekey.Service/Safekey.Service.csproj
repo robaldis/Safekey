@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+      <ProjectReference Include="../Safekey.Postgres.Deployment/Safekey.Postgres.Deployment.csproj" />
+  </ItemGroup>
 </Project>
+

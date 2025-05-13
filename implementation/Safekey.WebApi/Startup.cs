@@ -1,3 +1,4 @@
+using Safekey.Postgres.Deployment.Configuration;
 using Safekey.Service.Vault;
 using SimpleInjector;
 
@@ -26,7 +27,9 @@ namespace Safekey.Webapi
             {
                 options.AddAspNetCore()
                 .AddControllerActivation();
-                container.Register<VaultCatalogue, VaultCatalogue>(Lifestyle.Singleton);
+                container.Register<IVaultCatalogue, VaultCatalogue>(Lifestyle.Singleton);
+                container.Register<IVaultRegistry, VaultRegistry>(Lifestyle.Singleton);
+                container.Register<DbConfiguration>(Lifestyle.Singleton);
             });
 
         }
